@@ -1,3 +1,33 @@
-h1 {
-    color: blue;
+body {
+    margin: 0;
+    padding: 0;
+    background-color: beige;
+}
+
+.mainDiv{
+    /* border: 1px solid red; */
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 1fr 3fr;
+    height: 100vh;
+}
+
+.sidebarDiv{
+    border-right: 2px solid black;
+}
+
+.sidebarHeaderText{
+    font-size: 30px;
+}
+
+.todoHeaderText{
+    font-size: 30px;
+}
+
+.headerText{
+    border-bottom: 2px solid black;
+    padding: 10px 20px;
+}
+
+.todoDiv{
 }
