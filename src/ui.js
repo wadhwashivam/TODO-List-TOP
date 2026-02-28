@@ -27,7 +27,18 @@ let taskDueDate = document.querySelector("#taskPriority").value;
 
 const newProject = document.querySelector(".newProjectButton");
 const newProjectDialog = document.getElementById("newProjectDialog");
+const confirmProjectButton = document.getElementById("#confirmProject");
+
 
 newProject.addEventListener("click", () => {
     newProjectDialog.showModal();
 });
+
+
+
+confirmProjectButton.addEventListener("click", (event) => {
+    event.preventDefault();
+    newProjectDialog.close();
+});
+
+let projectName = document.querySelector("#projectNameInput").value;
