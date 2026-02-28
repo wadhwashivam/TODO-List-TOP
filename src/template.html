@@ -39,20 +39,21 @@
                     <form>
                         <div>
                             <label>Title</label>
-                            <input type="text">
+                            <input type="text" id="taskTitle">
                             <label>Description</label>
-                            <input type="text">
+                            <input type="text" id="taskDescription">
                             <label>Due Date</label>
-                            <input type="datetime">
+                            <input type="date" id="taskDueDate">
                             <label>Priority</label>
-                            <input type="number" min="1" max="4">
+                            <input type="number" min="1" max="4" id="taskPriority">
                         </div>
                         <div>
                             <button value="cancelTask">Cancel</button>
-                            <button value="createTask">Create Task</button>
+                            <button value="createTask" id="confirmButton">Create Task</button>
                         </div>
                     </form>
                 </dialog>
+                <output></output>
                 <button class="newTaskButton ">New Task</button>
             </div>
         </div>
