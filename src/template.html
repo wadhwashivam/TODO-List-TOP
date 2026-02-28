@@ -11,10 +11,49 @@
             <div class="headerText">
                 <span class="sidebarHeaderText">Projects</span>
             </div>
+            <div class="sideabarContent">
+                <div>
+                    <ul>
+                        <li class="projectList">My Tasks</li>
+                    </ul>
+                </div>
+                <dialog id="newProjectDialog">
+                    <form>
+                        <label>Project Name: </label>
+                        <input type="text" placeholder="ProjectName">
+                        <div>
+                            <button value="cancel" formmethod="dialog">Cancel</button>
+                            <button value="createProject" id="createProject">Create Project</button>
+                        </div>            
+                    </form>
+                </dialog>
+                <button class="newProjectButton">New Project</button>
+            </div>
         </div>
         <div class="todoDiv">
             <div class="headerText">
                 <span class="todoHeaderText">ToDo</span>
+            </div>
+            <div class="todoContent">
+                <dialog id="newTaskDialog">
+                    <form>
+                        <div>
+                            <label>Title</label>
+                            <input type="text">
+                            <label>Description</label>
+                            <input type="text">
+                            <label>Due Date</label>
+                            <input type="datetime">
+                            <label>Priority</label>
+                            <input type="number" min="1" max="4">
+                        </div>
+                        <div>
+                            <button value="cancelTask">Cancel</button>
+                            <button value="createTask">Create Task</button>
+                        </div>
+                    </form>
+                </dialog>
+                <button class="newTaskButton ">New Task</button>
             </div>
         </div>
     </div>

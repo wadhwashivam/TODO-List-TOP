@@ -29,5 +29,27 @@ body {
     padding: 10px 20px;
 }
 
-.todoDiv{
+
+.newProjectButton{
+    background-color: lightcoral;
+    color: black;
+    font-weight: 700;
+    font-size: 1em;
+    border: 0;
+    padding: 1em 2em;
+    margin-left: 2.5em;
+}
+
+.projectList {
+    list-style-type: none;
+    font-size: 1.5em;
+}
+
+.newTaskButton{
+    background-color: lightcoral;
+    color: black;
+    font-weight: 700;
+    font-size: 1em;
+    border: 0;
+    padding: 1em 2em;
 }
