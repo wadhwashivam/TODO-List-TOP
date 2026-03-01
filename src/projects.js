@@ -1,10 +1,17 @@
-// this file will have all the projects and will group the tasks in the arrays of the projects.
 
-// delete project function logic
 
-// complete project function logic
 
-let projectArray = [];
+let activeProject = null;
+
+function setActiveProject(project){
+    activeProject = project;
+}
+
+function getActiveProject(){
+    return activeProject;
+}
+
+export let projectArray = [];
 
 function addProject(projectName){
     if (projectName === ""){
@@ -19,5 +26,11 @@ function addProject(projectName){
     projectArray.push(projectObject);
 }
 
+addProject("My Tasks");
+setActiveProject(projectArray[0]);
 
-export {addProject};
+
+
+
+export {addProject , setActiveProject, getActiveProject};
+

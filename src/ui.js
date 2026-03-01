@@ -1,6 +1,6 @@
 // New Task Button
 
-import { addProject } from "./projects.js";
+import { addProject, projectArray, setActiveProject } from "./projects.js";
 
 import { addTask } from "./tasks.js";
 
@@ -69,4 +69,11 @@ confirmProjectButton.addEventListener("click", (event) => {
 
 cancelProjectButton.addEventListener("click", () =>{
     newProjectDialog.close();
+});
+
+// Event Delegation
+projectList.addEventListener("click", (event) => {
+    const projectNameActive = event.target.textContent;
+    const projectObj = projectArray.find(p => p.name === projectNameActive);
+    setActiveProject(projectObj);
 });
