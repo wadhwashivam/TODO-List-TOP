@@ -3,3 +3,20 @@
 // delete project function logic
 
 // complete project function logic
+
+let projectArray = [];
+
+function addProject(projectName){
+    if (projectName === ""){
+        alert("Project name cannot be empty.");
+    }
+
+    const projectObject ={
+        name: projectName,
+        tasks: []
+    }
+    projectArray.push(projectObject);
+}
+
+
+export {addProject};

@@ -1,6 +1,7 @@
 // New Task Button
 
-import { forEach } from "lodash";
+import { addProject } from "./projects.js";
+
 
 const newTask = document.querySelector(".newTaskButton");
 const newTaskDialog = document.getElementById("newTaskDialog");
@@ -33,11 +34,6 @@ const confirmProjectButton = document.getElementById("confirmProject");
 const projectList = document.querySelector(".projectList");
 const cancelProjectButton = document.getElementById("cancelProject");
 
-cancelProjectButton.addEventListener("click", () =>{
-    newProjectDialog.close();
-});
-
-let projectArray = [];
 
 newProject.addEventListener("click", () => {
     newProjectDialog.showModal();
@@ -48,16 +44,8 @@ confirmProjectButton.addEventListener("click", (event) => {
     event.preventDefault();
     let projectName = document.querySelector("#projectNameInput").value;
 
-    if (projectName === ""){
-        alert("Project name cannot be empty.");
-        return;
-    }
+    addProject(projectName);
 
-    const projectObject ={
-        name: projectName,
-        tasks: []
-    }
-    projectArray.push(projectObject);
     let projectListItem = document.createElement("li");
     projectListItem.className = "projectListItems";
     projectListItem.textContent = projectName;
@@ -66,3 +54,6 @@ confirmProjectButton.addEventListener("click", (event) => {
     newProjectDialog.close();
 });
 
+cancelProjectButton.addEventListener("click", () =>{
+    newProjectDialog.close();
+});
