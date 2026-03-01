@@ -77,3 +77,12 @@ projectList.addEventListener("click", (event) => {
     const projectObj = projectArray.find(p => p.name === projectNameActive);
     setActiveProject(projectObj);
 });
+
+
+// Creating new projects working. 
+// Creating new tasks in that specific project working. 
+// Basic stuff is working. 
+// Only thing left is styling the div and adding the option to remove the tasks, 
+// projects, completion, and also when the new project is created and opened, 
+// it should remove the tasks from the other projets. 
+// Basically refreshing the todo list needs to be implemented.
