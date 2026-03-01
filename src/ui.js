@@ -2,11 +2,12 @@
 
 import { addProject } from "./projects.js";
 
+import { addTask } from "./tasks.js";
 
 const newTask = document.querySelector(".newTaskButton");
 const newTaskDialog = document.getElementById("newTaskDialog");
 const confirmButton = document.getElementById("confirmButton");
-const outputBox = document.querySelector("output");
+const taskDiv = document.getElementById("taskDiv");
 
 newTask.addEventListener("click", () => {
     newTaskDialog.showModal();
@@ -14,13 +15,25 @@ newTask.addEventListener("click", () => {
 
 confirmButton.addEventListener("click", (event) => {
     event.preventDefault();
+    
+    let taskTitle = document.querySelector("#taskTitle").value;
+    let taskDescription = document.querySelector("#taskDescription").value;
+    let taskDueDate = document.querySelector("#taskDueDate").value;
+    let taskPriority = document.querySelector("#taskPriority").value;
+
+    addTask(taskTitle, taskDescription, taskPriority, taskDueDate);
+
+    let taskDivContent = document.createElement("div");
+    taskDivContent.className = "taskDivContent";
+    taskDivContent.innerHTML = `${taskTitle} <br> ${taskDescription} <br> ${taskDueDate} <br> ${taskPriority}`;
+    taskDiv.append(taskDivContent);
+
+
+
     newTaskDialog.close();
 });
 
-let taskTitle = document.querySelector("#taskTitle").value;
-let taskDescription = document.querySelector("#taskDescription").value;
-let taskPriority = document.querySelector("#taskDueDate").value;
-let taskDueDate = document.querySelector("#taskPriority").value;
+
 
 
 

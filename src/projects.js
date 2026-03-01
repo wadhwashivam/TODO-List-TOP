@@ -9,6 +9,7 @@ let projectArray = [];
 function addProject(projectName){
     if (projectName === ""){
         alert("Project name cannot be empty.");
+        return;
     }
 
     const projectObject ={
