@@ -1,6 +1,6 @@
 // New Task Button
 
-import { addProject, projectArray, setActiveProject } from "./projects.js";
+import { addProject, projectArray, setActiveProject, getActiveProject} from "./projects.js";
 
 import { addTask } from "./tasks.js";
 
@@ -25,9 +25,8 @@ confirmButton.addEventListener("click", (event) => {
 
     let taskDivContent = document.createElement("div");
     taskDivContent.className = "taskDivContent";
-    taskDivContent.innerHTML = `${taskTitle} <br> ${taskDescription} <br> ${taskDueDate} <br> ${taskPriority}`;
+    taskDivContent.innerHTML = ` Title: ${taskTitle} <br> Description: ${taskDescription} <br> Due Date: ${taskDueDate} <br> Priority: ${taskPriority}`;
     taskDiv.append(taskDivContent);
-
 
 
     newTaskDialog.close();
@@ -71,11 +70,28 @@ cancelProjectButton.addEventListener("click", () =>{
     newProjectDialog.close();
 });
 
+function renderTasks() {
+    const activeProject = getActiveProject();
+    taskDiv.textContent = "";
+    activeProject.tasks.forEach(task => {
+        const taskElement = document.createElement("div");
+        taskElement.innerHTML = ` Title: ${task.title} <br> Description: ${task.description} <br> Due Date: ${task.dueDate} <br> Priority: ${task.priority}`;
+        taskDiv.append(taskElement);
+    })
+}
+
 // Event Delegation
 projectList.addEventListener("click", (event) => {
     const projectNameActive = event.target.textContent;
     const projectObj = projectArray.find(p => p.name === projectNameActive);
     setActiveProject(projectObj);
+
+
+
+
+    renderTasks();
+
+
 });
 
 

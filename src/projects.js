@@ -1,6 +1,3 @@
-
-
-
 let activeProject = null;
 
 function setActiveProject(project){
