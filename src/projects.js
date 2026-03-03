@@ -10,16 +10,20 @@ function getActiveProject(){
 
 export let projectArray = [];
 
+function createProject(name){
+    return {
+        name: name,
+        tasks: []
+    };
+}
+
 function addProject(projectName){
     if (projectName === ""){
         alert("Project name cannot be empty.");
         return;
     }
 
-    const projectObject ={
-        name: projectName,
-        tasks: []
-    }
+    const projectObject = createProject(projectName);
     projectArray.push(projectObject);
 }
 
