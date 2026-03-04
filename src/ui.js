@@ -54,7 +54,7 @@ newProject.addEventListener("click", () => {
 
 confirmProjectButton.addEventListener("click", (event) => {
     event.preventDefault();
-    let projectName = document.querySelector("#projectNameInput").value;
+    let projectName = document.querySelector(".projectNameInput").value;
 
     addProject(projectName);
 
@@ -93,12 +93,3 @@ projectList.addEventListener("click", (event) => {
 
 
 });
-
-
-// Creating new projects working. 
-// Creating new tasks in that specific project working. 
-// Basic stuff is working. 
-// Only thing left is styling the div and adding the option to remove the tasks, 
-// projects, completion, and also when the new project is created and opened, 
-// it should remove the tasks from the other projets. 
-// Basically refreshing the todo list needs to be implemented.

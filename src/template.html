@@ -1,63 +1,87 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="mainDiv">
-        <div class="sidebarDiv">
-            <div class="headerText">
-                <span class="sidebarHeaderText">Projects</span>
-            </div>
-            <div class="sideabarContent">
+      <div class="sidebarDiv">
+        <div class="headerText">
+          <span class="sidebarHeaderText">Projects</span>
+        </div>
+        <div class="sideabarContent">
+          <div>
+            <ul class="projectList">
+              <li class="projectListItems">My Tasks</li>
+            </ul>
+          </div>
+          <dialog id="newProjectDialog">
+            <form>
+              <div class="projectStyleDiv">
+                <label id="projectNameLabel">Project Name </label>
+                <input
+                  type="text"
+                  placeholder="Project Name"
+                  class="projectNameInput"
+                />
                 <div>
-                    <ul class="projectList">
-                        <li class="projectListItems">My Tasks</li>
-                    </ul>
+                  <div class="projectButtonDiv">
+                    <button value="createProject" id="confirmProject" class="projectButtons">
+                      Create Project
+                    </button>
+                    <button value="cancel" formmethod="dialog" id="cancelProject" class="projectButtons">
+                      Cancel
+                    </button>
+                  </div>
                 </div>
-                <dialog id="newProjectDialog">
-                    <form>
-                        <label>Project Name: </label>
-                        <input type="text" placeholder="Project Name" id="projectNameInput">
-                        <div>
-                            <button value="cancel" formmethod="dialog" id="cancelProject">Cancel</button>
-                            <button value="createProject" id="confirmProject">Create Project</button>
-                        </div>            
-                    </form>
-                </dialog>
-                <button class="newProjectButton">New Project</button>
-            </div>
+              </div>
+            </form>
+          </dialog>
+          <button class="newProjectButton">New Project</button>
         </div>
-        <div class="todoDiv">
-            <div class="headerText">
-                <span class="todoHeaderText">ToDo</span>
-            </div>
-            <div class="todoContent">
-                <dialog id="newTaskDialog">
-                    <form>
-                        <div>
-                            <label>Title</label>
-                            <input type="text" id="taskTitle">
-                            <label>Description</label>
-                            <input type="text" id="taskDescription">
-                            <label>Due Date</label>
-                            <input type="date" id="taskDueDate">
-                            <label>Priority</label>
-                            <input type="number" min="1" max="4" id="taskPriority">
-                        </div>
-                        <div>
-                            <button value="cancelTask">Cancel</button>
-                            <button value="createTask" id="confirmButton">Create Task</button>
-                        </div>
-                    </form>
-                </dialog>
+      </div>
+      <div class="todoDiv">
+        <div class="headerText">
+          <span class="todoHeaderText">ToDo</span>
+        </div>
+        <div class="todoContent">
+          <dialog id="newTaskDialog">
+            <form>
+              <div class="taskFormDiv">
+                <div>
+                  <label class="taskNameLabel">Title</label>
+                  <input type="text" id="taskTitle" class="projectNameInput" placeholder="Task Title"/>
+                </div>
+                <div class="taskDescriptionDiv">
+                  <label class="taskNameLabel">Description</label>
+                  <!-- <input type="file"    id="taskDescription" /> -->
+                  <textarea name="taskDescription" id="taskDescription" class="projectNameInput" placeholder="Task Description" rows="1"></textarea>
+                </div>
+                <div>
+                  <label class="taskNameLabel">Due Date</label>
+                  <input type="date" id="taskDueDate"  class="projectNameInput"/>
+                </div>
+                <div>
+                  <label class="taskNameLabel">Priority</label>
+                  <input type="number" min="1" max="4" id="taskPriority" class="projectNameInput" placeholder="1"/>
+                </div>              
+              
+              <div class="projectButtonDiv">
+                <button value="createTask" id="confirmButton" class="projectButtons">
+                  Create Task
+                </button>
+                <button value="cancelTask" class="projectButtons">Cancel</button>
+              </div>
+              </div>
+            </form>
+          </dialog>
 
-                <div id="taskDiv"></div>
-                <button class="newTaskButton ">New Task</button>
-            </div>
+          <div id="taskDiv"></div>
+          <button class="newTaskButton">New Task</button>
         </div>
+      </div>
     </div>
-</body>
+  </body>
 </html>

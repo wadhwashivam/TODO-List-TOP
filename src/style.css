@@ -1,55 +1,119 @@
 body {
-    margin: 0;
-    padding: 0;
-    background-color: beige;
+  margin: 0;
+  padding: 0;
+  background-color: beige;
 }
 
-.mainDiv{
-    /* border: 1px solid red; */
-    display: grid;
-    grid-auto-flow: column;
-    grid-template-columns: 1fr 3fr;
-    height: 100vh;
+.mainDiv {
+  /* border: 1px solid red; */
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: 1fr 3fr;
+  height: 100vh;
 }
 
-.sidebarDiv{
-    border-right: 2px solid black;
+.sidebarDiv {
+  border-right: 2px solid black;
 }
 
-.sidebarHeaderText{
-    font-size: 30px;
+.sidebarHeaderText {
+  font-size: 30px;
 }
 
-.todoHeaderText{
-    font-size: 30px;
+.todoHeaderText {
+  font-size: 30px;
 }
 
-.headerText{
-    border-bottom: 2px solid black;
+.headerText {
+  border-bottom: 2px solid black;
+  padding: 10px 20px;
+}
+
+.newProjectButton {
+  background-color: lightcoral;
+  color: black;
+  font-weight: 700;
+  font-size: 1em;
+  border: 0;
+  padding: 1em 2em;
+  margin-left: 2.5em;
+}
+
+.projectListItems {
+  list-style-type: none;
+  font-size: 1.5em;
+}
+
+.newTaskButton {
+  background-color: lightcoral;
+  color: black;
+  font-weight: 700;
+  font-size: 1em;
+  border: 0;
+  padding: 1em 2em;
+}
+
+#newProjectDialog {
+    padding: 2em 2em;
+    background-color: antiquewhite;
+    border: 0;
+    border-radius: 2em;
+}
+
+
+#projectNameLabel {
+    font-size: 1.5em;
+}
+
+.projectNameInput{
+    font-size: 1.2em;
+    background-color: antiquewhite;
+    border: 0;
+    border-bottom: 2px solid green;
+}
+
+.projectButtonDiv{
+    display: flex;
+    margin-top: 1em;
+    justify-content: space-around;
+}
+
+.projectButtons{
+    font-size: 1em;
+    background-color: aliceblue;
+    border: 0;
+    border-radius: 2em;
     padding: 10px 20px;
 }
 
 
-.newProjectButton{
-    background-color: lightcoral;
-    color: black;
-    font-weight: 700;
-    font-size: 1em;
+#newTaskDialog{
+    padding: 2em 2em;
+    background-color: antiquewhite;
     border: 0;
-    padding: 1em 2em;
-    margin-left: 2.5em;
+    border-radius: 2em;
 }
 
-.projectListItems {
-    list-style-type: none;
+.taskNameLabel {
     font-size: 1.5em;
 }
 
-.newTaskButton{
-    background-color: lightcoral;
-    color: black;
-    font-weight: 700;
-    font-size: 1em;
-    border: 0;
-    padding: 1em 2em;
+.taskFormDiv {
+    margin-right: 2em;
+    margin-left: 1em;
+    display: flex;
+    flex-direction: column;
 }
+
+.taskDescriptionDiv{
+    align-self: center;
+}
+
+.projectButtons{
+    font-size: 1em;
+    background-color: aliceblue;
+    border: 0;
+    border-radius: 2em;
+    padding: 10px 20px;
+}
+
