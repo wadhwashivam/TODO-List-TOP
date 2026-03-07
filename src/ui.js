@@ -1,95 +1,123 @@
 // New Task Button
 
-import { addProject, projectArray, setActiveProject, getActiveProject} from "./projects.js";
+import { addProject, projectArray, setActiveProject, getActiveProject } from './projects.js';
 
-import { addTask } from "./tasks.js";
+import { addTask, removeTask} from './tasks.js';
 
-const newTask = document.querySelector(".newTaskButton");
-const newTaskDialog = document.getElementById("newTaskDialog");
-const confirmButton = document.getElementById("confirmButton");
-const taskDiv = document.getElementById("taskDiv");
+const newTask = document.querySelector('.newTaskButton');
+const newTaskDialog = document.getElementById('newTaskDialog');
+const confirmButton = document.getElementById('confirmButton');
+const taskDiv = document.getElementById('taskDiv');
 
-newTask.addEventListener("click", () => {
-    newTaskDialog.showModal();
+newTask.addEventListener('click', () => {
+  newTaskDialog.showModal();
 });
 
-confirmButton.addEventListener("click", (event) => {
-    event.preventDefault();
-    
-    let taskTitle = document.querySelector("#taskTitle").value;
-    let taskDescription = document.querySelector("#taskDescription").value;
-    let taskDueDate = document.querySelector("#taskDueDate").value;
-    let taskPriority = document.querySelector("#taskPriority").value;
+confirmButton.addEventListener('click', (event) => {
+  event.preventDefault();
 
-    addTask(taskTitle, taskDescription, taskPriority, taskDueDate);
+  let taskTitle = document.querySelector('#taskTitle').value;
+  let taskDescription = document.querySelector('#taskDescription').value;
+  let taskDueDate = document.querySelector('#taskDueDate').value;
+  let taskPriority = document.querySelector('#taskPriority').value;
 
-    let taskDivContent = document.createElement("div");
-    taskDivContent.className = "taskDivContent";
-    taskDivContent.innerHTML = ` Title: ${taskTitle} <br> Description: ${taskDescription} <br> Due Date: ${taskDueDate} <br> Priority: ${taskPriority}`;
-    taskDiv.append(taskDivContent);
+  const task = addTask(taskTitle, taskDescription, taskPriority, taskDueDate);
+
+  const taskDivContent = document.createElement('div');
+  taskDivContent.className = 'taskDivContent';
+
+  const title = document.createElement("span");
+  title.textContent = `Title: ${taskTitle}`;
+  title.className = "taskContentStyle";
+
+  const description = document.createElement("span");
+  description.textContent = `Description: ${taskDescription}`;
+  description.className = "taskContentStyle";
+  
+  const dueDate = document.createElement("span");
+  dueDate.textContent = `Due Date: ${taskDueDate}`;
+  dueDate.className = "taskContentStyle";
+  
+  const priority = document.createElement("span");
+  priority.textContent = `Priority: ${taskPriority}`;
+  priority.className = "taskContentStyle";
+
+  const taskCompleted = document.createElement("button");
+  taskCompleted.textContent = "Task Completed";
+  taskCompleted.className = "taskCompletedButton";
+
+  taskCompleted.addEventListener("click", () => {
+    taskDivContent.style = "background-color: lightgreen;";
+  })
+
+  const removeTaskButton = document.createElement("button");
+  removeTaskButton.textContent = "Remove Task";
+  removeTaskButton.className = "removeButton";
+
+  removeTaskButton.addEventListener("click", () => {
+    removeTask(task.id);
+    taskDivContent.remove();
+  })
+
+  
+  taskDivContent.append(title, description, dueDate, priority, taskCompleted, removeTaskButton);
 
 
-    newTaskDialog.close();
+  taskDiv.append(taskDivContent);
+
+  newTaskDialog.close();
 });
-
-
-
-
-
-
 
 // New Project Button
 
-const newProject = document.querySelector(".newProjectButton");
-const newProjectDialog = document.getElementById("newProjectDialog");
-const confirmProjectButton = document.getElementById("confirmProject");
-const projectList = document.querySelector(".projectList");
-const cancelProjectButton = document.getElementById("cancelProject");
+const newProject = document.querySelector('.newProjectButton');
+const newProjectDialog = document.getElementById('newProjectDialog');
+const confirmProjectButton = document.getElementById('confirmProject');
+const projectList = document.querySelector('.projectList');
+const cancelProjectButton = document.getElementById('cancelProject');
 
-
-newProject.addEventListener("click", () => {
-    newProjectDialog.showModal();
+newProject.addEventListener('click', () => {
+  newProjectDialog.showModal();
 });
 
+confirmProjectButton.addEventListener('click', (event) => {
+  event.preventDefault();
+  let projectName = document.querySelector('.projectNameInput').value;
 
-confirmProjectButton.addEventListener("click", (event) => {
-    event.preventDefault();
-    let projectName = document.querySelector(".projectNameInput").value;
+  addProject(projectName);
 
-    addProject(projectName);
+  let projectListItem = document.createElement('li');
+  projectListItem.className = 'projectListItems';
+  projectListItem.textContent = projectName;
+  projectList.appendChild(projectListItem);
 
-    let projectListItem = document.createElement("li");
-    projectListItem.className = "projectListItems";
-    projectListItem.textContent = projectName;
-    projectList.appendChild(projectListItem);
-
-    newProjectDialog.close();
+  newProjectDialog.close();
 });
 
-cancelProjectButton.addEventListener("click", () =>{
-    newProjectDialog.close();
+cancelProjectButton.addEventListener('click', () => {
+  newProjectDialog.close();
 });
 
 function renderTasks() {
-    const activeProject = getActiveProject();
-    taskDiv.textContent = "";
-    activeProject.tasks.forEach(task => {
-        const taskElement = document.createElement("div");
-        taskElement.innerHTML = ` Title: ${task.title} <br> Description: ${task.description} <br> Due Date: ${task.dueDate} <br> Priority: ${task.priority}`;
-        taskDiv.append(taskElement);
-    })
+  const activeProject = getActiveProject();
+  taskDiv.textContent = '';
+  activeProject.tasks.forEach((task) => {
+    const taskElement = document.createElement('div');
+    taskElement.innerHTML = ` Title: ${task.title} <br />
+      Description: ${task.description} <br />
+      Due Date: ${task.dueDate} <br />
+      Priority: ${task.priority}
+      `;
+
+    taskDiv.append(taskElement);
+  });
 }
 
 // Event Delegation
-projectList.addEventListener("click", (event) => {
-    const projectNameActive = event.target.textContent;
-    const projectObj = projectArray.find(p => p.name === projectNameActive);
-    setActiveProject(projectObj);
+projectList.addEventListener('click', (event) => {
+  const projectNameActive = event.target.textContent;
+  const projectObj = projectArray.find((p) => p.name === projectNameActive);
+  setActiveProject(projectObj);
 
-
-
-
-    renderTasks();
-
-
+  renderTasks();
 });

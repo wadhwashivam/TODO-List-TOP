@@ -2,7 +2,10 @@ import { getActiveProject } from "./projects.js";
 
 
 function createTask(taskTitle, taskDescription, taskDueDate, taskPriority){
+    const id = Date.now();
+    
     return {
+        id: id,
         title: taskTitle,
         description: taskDescription,
         dueDate: taskDueDate,
@@ -16,9 +19,17 @@ function addTask(taskTitle, taskDescription, taskDueDate, taskPriority){
         return;
     }
     const taskObject = createTask(taskTitle, taskDescription, taskDueDate, taskPriority);
+
     const activeProject = getActiveProject();
     activeProject.tasks.push(taskObject);
+
+    return taskObject;
+}
+
+function removeTask(id){
+    const activeProject = getActiveProject();
+    activeProject.tasks = activeProject.tasks.filter(task => task.id !==id);
 }
 
 
-export {addTask};
+export {addTask, removeTask};
